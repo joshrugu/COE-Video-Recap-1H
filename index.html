@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#7a0019" />
-  <title>Engagement COE 2026 First Half Recap</title>
-  <meta name="description" content="GCS&I COE 2026 First Half Recap." />
+  <title>Engagement COE Presents | 2026 First Half Recap</title>
+  <meta name="description" content="Engagement COE presents the 2026 First Half Recap." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,6 @@
       --mid:#7a0019;
       --red:#d71920;
       --gold:#ffc857;
-      --white:#fff;
       --line:rgba(255,255,255,.2);
     }
 
@@ -61,17 +60,17 @@
 
     .eyebrow{
       margin:0 0 10px;
-      font-size:.75rem;
-      font-weight:700;
+      font-size:.78rem;
+      font-weight:800;
       letter-spacing:.22em;
       text-transform:uppercase;
-      color:rgba(255,255,255,.72);
+      color:rgba(255,255,255,.76);
     }
 
     h1{
       margin:0;
       font-family:"Space Grotesk",sans-serif;
-      font-size:clamp(2.4rem,10vw,5.8rem);
+      font-size:clamp(2.5rem,10vw,5.8rem);
       line-height:.96;
       letter-spacing:-.05em;
     }
@@ -82,23 +81,6 @@
       color:rgba(255,255,255,.78);
       font-size:clamp(.98rem,3.4vw,1.15rem);
       line-height:1.55;
-    }
-
-    .watch-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      margin-top:20px;
-      padding:14px 22px;
-      border:0;
-      border-radius:999px;
-      background:linear-gradient(135deg,#fff2c5,var(--gold));
-      color:#4f0012;
-      font-weight:800;
-      text-decoration:none;
-      cursor:pointer;
-      box-shadow:0 14px 36px rgba(255,200,87,.24);
     }
 
     .player-card{
@@ -137,23 +119,45 @@
 
     .tool-btn{
       border:1px solid var(--line);
-      background:rgba(255,255,255,.09);
+      background:rgba(255,255,255,.1);
       color:white;
-      padding:11px 14px;
+      padding:12px 16px;
       border-radius:999px;
-      font-weight:700;
+      font-weight:800;
       cursor:pointer;
-      text-decoration:none;
+      min-width:150px;
     }
 
     .tool-btn:active{transform:scale(.98)}
 
     .rotate-note{
       text-align:center;
-      color:rgba(255,255,255,.65);
+      color:rgba(255,255,255,.68);
       font-size:.88rem;
       line-height:1.45;
       margin:0 10px;
+    }
+
+    .orientation-toast{
+      position:fixed;
+      left:50%;
+      bottom:max(24px,env(safe-area-inset-bottom));
+      transform:translateX(-50%) translateY(130%);
+      width:min(92vw,460px);
+      padding:14px 18px;
+      border-radius:18px;
+      background:rgba(20,0,6,.94);
+      border:1px solid rgba(255,255,255,.2);
+      text-align:center;
+      font-weight:700;
+      line-height:1.4;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      z-index:80;
+      transition:transform .28s ease;
+    }
+
+    .orientation-toast.show{
+      transform:translateX(-50%) translateY(0);
     }
 
     footer{
@@ -170,6 +174,21 @@
       z-index:50;
     }
 
+    .player-wrap:fullscreen,
+    .player-wrap:-webkit-full-screen{
+      width:100vw;
+      height:100vh;
+      aspect-ratio:auto;
+      border-radius:0;
+      background:#000;
+    }
+
+    .player-wrap:fullscreen iframe,
+    .player-wrap:-webkit-full-screen iframe{
+      width:100%;
+      height:100%;
+    }
+
     @media (orientation:landscape) and (max-height:650px){
       .page{
         width:100%;
@@ -179,9 +198,7 @@
         justify-content:flex-start;
       }
 
-      .hero{
-        display:none;
-      }
+      .hero{display:none}
 
       .player-card{
         border-radius:14px;
@@ -189,36 +206,20 @@
       }
 
       .player-wrap{
-        height:calc(100svh - 62px);
+        height:calc(100svh - 64px);
         aspect-ratio:auto;
         border-radius:10px;
       }
 
-      .viewer-tools{
-        margin-top:6px;
-      }
-
-      .rotate-note,footer{
-        display:none;
-      }
+      .viewer-tools{margin-top:6px}
+      .rotate-note,footer{display:none}
     }
 
     @media (max-width:600px){
-      .page{
-        justify-content:flex-start;
-      }
-
-      .hero{
-        padding-top:12px;
-      }
-
-      .player-card{
-        margin-top:4px;
-      }
-    }
-
-    @media (prefers-reduced-motion:reduce){
-      *{scroll-behavior:auto!important}
+      .page{justify-content:flex-start}
+      .hero{padding-top:12px}
+      .player-card{margin-top:4px}
+      .tool-btn{flex:1}
     }
   </style>
 </head>
@@ -228,66 +229,111 @@
 
   <main class="page">
     <section class="hero">
-      <p class="eyebrow">GCS&amp;I COE presents</p>
+      <p class="eyebrow">Engagement COE Presents</p>
       <h1>2026 First Half Recap</h1>
-      <p class="sub">Tap play, turn your phone sideways, and enjoy the recap in full screen.</p>
-      <a class="watch-btn" href="#recap" id="watchBtn">▶ Watch the Recap</a>
+      <p class="sub">Turn your phone sideways and enjoy the recap in full screen.</p>
     </section>
 
-    <section class="player-card" id="recap" aria-label="GCS&I COE 2026 First Half Recap">
+    <section class="player-card" aria-label="2026 First Half Recap">
       <div class="player-wrap" id="playerWrap">
         <iframe
           id="recapFrame"
           loading="lazy"
           src="https://www.canva.com/design/DAHOxlNI2Pc/hJ-0WrZ6fAN3uDyI5ax_Fg/watch?embed"
-          allowfullscreen="allowfullscreen"
-          allow="fullscreen"
-          title="GCS&I COE 2026 First Half Recap">
+          allow="fullscreen; autoplay"
+          allowfullscreen
+          webkitallowfullscreen
+          title="2026 First Half Recap">
         </iframe>
       </div>
 
       <div class="viewer-tools">
-        <button class="tool-btn" id="fullscreenBtn">⛶ Full Screen</button>
-        <button class="tool-btn" id="rotateBtn">↻ Rotate to Landscape</button>
+        <button class="tool-btn" id="fullscreenBtn" type="button">⛶ Full Screen</button>
+        <button class="tool-btn" id="landscapeBtn" type="button">↻ Landscape View</button>
       </div>
     </section>
 
-    <p class="rotate-note">For the best experience on mobile, rotate your phone to landscape and tap Full Screen.</p>
+    <p class="rotate-note">On iPhone, tap Landscape View, then rotate the phone manually if Safari does not rotate automatically.</p>
 
     <footer>Made by COE Engagement</footer>
   </main>
 
+  <div class="orientation-toast" id="orientationToast" role="status" aria-live="polite">
+    Rotate your phone sideways for the best viewing experience.
+  </div>
+
   <script>
-    const watchBtn = document.getElementById('watchBtn');
-    const fullscreenBtn = document.getElementById('fullscreenBtn');
-    const rotateBtn = document.getElementById('rotateBtn');
     const playerWrap = document.getElementById('playerWrap');
-    const recapFrame = document.getElementById('recapFrame');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const landscapeBtn = document.getElementById('landscapeBtn');
+    const orientationToast = document.getElementById('orientationToast');
 
-    watchBtn.addEventListener('click', () => {
-      burstConfetti(140);
-    });
+    function showToast(message){
+      orientationToast.textContent = message;
+      orientationToast.classList.add('show');
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => {
+        orientationToast.classList.remove('show');
+      }, 3200);
+    }
 
-    recapFrame.addEventListener('load', () => {
-      setTimeout(() => burstConfetti(90), 400);
-    });
+    async function enterFullscreen(){
+      try{
+        if(document.fullscreenElement || document.webkitFullscreenElement) return true;
+
+        if(playerWrap.requestFullscreen){
+          await playerWrap.requestFullscreen();
+          return true;
+        }
+
+        if(playerWrap.webkitRequestFullscreen){
+          playerWrap.webkitRequestFullscreen();
+          return true;
+        }
+      }catch(error){}
+
+      showToast('Full screen is blocked by this browser. Tap the full-screen icon inside the Canva player.');
+      return false;
+    }
 
     fullscreenBtn.addEventListener('click', async () => {
-      try {
-        if (playerWrap.requestFullscreen) {
-          await playerWrap.requestFullscreen();
-        } else if (playerWrap.webkitRequestFullscreen) {
-          playerWrap.webkitRequestFullscreen();
-        }
-      } catch (e) {}
+      if(document.fullscreenElement && document.exitFullscreen){
+        await document.exitFullscreen();
+        return;
+      }
+
+      if(document.webkitFullscreenElement && document.webkitExitFullscreen){
+        document.webkitExitFullscreen();
+        return;
+      }
+
+      const opened = await enterFullscreen();
+      if(opened) burstConfetti(120);
     });
 
-    rotateBtn.addEventListener('click', async () => {
-      try {
-        if (screen.orientation && screen.orientation.lock) {
+    landscapeBtn.addEventListener('click', async () => {
+      const opened = await enterFullscreen();
+
+      try{
+        if(screen.orientation && screen.orientation.lock){
           await screen.orientation.lock('landscape');
+          showToast('Landscape mode activated.');
+        }else{
+          showToast('Rotate your phone sideways. Your browser does not allow automatic rotation.');
         }
-      } catch (e) {}
+      }catch(error){
+        showToast('Rotate your phone sideways. Safari may require manual rotation.');
+      }
+
+      if(opened) burstConfetti(120);
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      fullscreenBtn.textContent = document.fullscreenElement ? '× Exit Full Screen' : '⛶ Full Screen';
+    });
+
+    document.addEventListener('webkitfullscreenchange', () => {
+      fullscreenBtn.textContent = document.webkitFullscreenElement ? '× Exit Full Screen' : '⛶ Full Screen';
     });
 
     const canvas = document.getElementById('confetti');
@@ -307,16 +353,16 @@
       const colors = ['#ffc857','#ffffff','#ff6b81','#ffd6de','#ff9f1c'];
       for(let i=0;i<amount;i++){
         pieces.push({
-          x: window.innerWidth/2 + (Math.random()-.5)*160,
-          y: window.innerHeight*.28,
-          vx: (Math.random()-.5)*10,
-          vy: -3-Math.random()*7,
-          g: .16+Math.random()*.07,
-          r: 3+Math.random()*5,
-          a: 1,
-          spin: (Math.random()-.5)*.25,
-          rot: Math.random()*Math.PI,
-          color: colors[Math.floor(Math.random()*colors.length)]
+          x:window.innerWidth/2+(Math.random()-.5)*160,
+          y:window.innerHeight*.28,
+          vx:(Math.random()-.5)*10,
+          vy:-3-Math.random()*7,
+          g:.16+Math.random()*.07,
+          r:3+Math.random()*5,
+          a:1,
+          spin:(Math.random()-.5)*.25,
+          rot:Math.random()*Math.PI,
+          color:colors[Math.floor(Math.random()*colors.length)]
         });
       }
       if(!raf) animateConfetti();
@@ -324,29 +370,30 @@
 
     function animateConfetti(){
       ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+
       pieces.forEach(p=>{
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += p.g;
-        p.rot += p.spin;
-        p.a -= .009;
+        p.x+=p.vx;
+        p.y+=p.vy;
+        p.vy+=p.g;
+        p.rot+=p.spin;
+        p.a-=.009;
 
         ctx.save();
-        ctx.globalAlpha = Math.max(p.a,0);
+        ctx.globalAlpha=Math.max(p.a,0);
         ctx.translate(p.x,p.y);
         ctx.rotate(p.rot);
-        ctx.fillStyle = p.color;
+        ctx.fillStyle=p.color;
         ctx.fillRect(-p.r,-p.r/2,p.r*2,p.r);
         ctx.restore();
       });
 
-      pieces = pieces.filter(p=>p.a>0 && p.y<window.innerHeight+30);
+      pieces=pieces.filter(p=>p.a>0&&p.y<window.innerHeight+30);
 
       if(pieces.length){
-        raf = requestAnimationFrame(animateConfetti);
+        raf=requestAnimationFrame(animateConfetti);
       }else{
         cancelAnimationFrame(raf);
-        raf = null;
+        raf=null;
         ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
       }
     }
