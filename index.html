@@ -283,7 +283,7 @@
       <div class="player-wrap">
         <iframe
           id="recapFrame"
-          src="https://www.canva.com/design/DAHOxlNI2Pc/hJ-0WrZ6fAN3uDyI5ax_Fg/watch?embed"
+          src="https://drive.google.com/file/d/1xE4toVQX19mGaeeddwOBAWCsrJg2a-U_/preview"
           allow="fullscreen; autoplay"
           allowfullscreen
           webkitallowfullscreen
@@ -305,9 +305,9 @@
     const frame = document.getElementById('recapFrame');
     const watchAgain = document.getElementById('watchAgain');
     const watchAgainBtn = document.getElementById('watchAgainBtn');
-    const canvaUrl = 'https://www.canva.com/design/DAHOxlNI2Pc/hJ-0WrZ6fAN3uDyI5ax_Fg/watch?embed';
+    const driveUrl = 'https://drive.google.com/file/d/1xE4toVQX19mGaeeddwOBAWCsrJg2a-U_/preview';
 
-    // Canva does not expose playback-ended events to the parent page.
+    // Google Drive does not expose playback-ended events to the parent page.
     // Show the replay overlay after a configurable duration.
     const VIDEO_DURATION_MS = 60000; // Replay overlay appears at 1 minute.
     let replayTimer;
@@ -330,7 +330,7 @@
       frame.src = 'about:blank';
 
       setTimeout(() => {
-        frame.src = canvaUrl + '&restart=' + Date.now();
+        frame.src = driveUrl + '?t=' + Date.now();
         burstConfetti(120);
         startReplayTimer();
       }, 80);
