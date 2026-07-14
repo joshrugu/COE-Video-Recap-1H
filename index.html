@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#6e0019" />
+  <meta name="theme-color" content="#000000" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Engagement COE Presents | 2026 First Half Recap</title>
-  <meta name="description" content="Engagement COE presents the 2026 First Half Recap." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,19 +41,6 @@
       position:relative;
     }
 
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-      background-size:32px 32px;
-      mask-image:linear-gradient(to bottom,black,transparent 88%);
-      z-index:0;
-    }
-
     .orb{
       position:fixed;
       border-radius:50%;
@@ -78,17 +64,17 @@
       flex-direction:column;
       justify-content:center;
       gap:24px;
+      transition:background .3s ease;
     }
 
     .hero{
       text-align:center;
-      padding:6px 8px 0;
+      transition:opacity .3s ease,transform .3s ease;
     }
 
     .eyebrow{
       display:inline-flex;
       align-items:center;
-      gap:8px;
       margin:0 0 14px;
       padding:8px 13px;
       border:1px solid rgba(255,255,255,.18);
@@ -99,7 +85,6 @@
       font-weight:800;
       letter-spacing:.18em;
       text-transform:uppercase;
-      color:rgba(255,255,255,.84);
     }
 
     h1{
@@ -108,7 +93,6 @@
       font-size:clamp(3rem,10vw,6.6rem);
       line-height:.9;
       letter-spacing:-.055em;
-      text-wrap:balance;
     }
 
     h1 span{
@@ -117,7 +101,6 @@
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
-      filter:drop-shadow(0 10px 28px rgba(0,0,0,.18));
     }
 
     .sub{
@@ -125,7 +108,6 @@
       margin:18px auto 0;
       color:rgba(255,255,255,.78);
       font-size:clamp(1rem,3.3vw,1.16rem);
-      line-height:1.55;
     }
 
     .player-shell{
@@ -137,6 +119,7 @@
       box-shadow:0 30px 90px rgba(28,0,8,.42), inset 0 1px 0 rgba(255,255,255,.12);
       backdrop-filter:blur(18px);
       overflow:hidden;
+      transition:all .35s ease;
     }
 
     .player-wrap{
@@ -145,7 +128,8 @@
       aspect-ratio:16/9;
       overflow:hidden;
       border-radius:20px;
-      background:#130006;
+      background:#000;
+      transition:all .35s ease;
     }
 
     iframe{
@@ -156,24 +140,35 @@
       border:0;
     }
 
-    .replay-row{
-      display:flex;
-      justify-content:center;
-      padding-top:14px;
+    .watch-again{
+      position:absolute;
+      inset:0;
+      z-index:3;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.68));
+      opacity:0;
+      visibility:hidden;
+      transition:opacity .25s ease,visibility .25s ease;
     }
 
-    .replay-btn{
-      border:1px solid rgba(255,255,255,.22);
-      background:rgba(255,255,255,.1);
+    .watch-again.show{
+      opacity:1;
+      visibility:visible;
+    }
+
+    .watch-again button{
+      border:1px solid rgba(255,255,255,.3);
+      background:rgba(255,255,255,.14);
       color:white;
       border-radius:999px;
-      padding:11px 17px;
+      padding:14px 22px;
       font-weight:800;
+      font-size:1rem;
+      backdrop-filter:blur(12px);
       cursor:pointer;
-      backdrop-filter:blur(10px);
+      box-shadow:0 16px 40px rgba(0,0,0,.3);
     }
-
-    .replay-btn:active{transform:scale(.98)}
 
     .rotate-tip{
       display:none;
@@ -187,8 +182,22 @@
       border:1px solid rgba(255,255,255,.14);
       color:rgba(255,255,255,.78);
       font-size:.88rem;
-      line-height:1.35;
-      backdrop-filter:blur(10px);
+    }
+
+    .fullscreen-hint{
+      position:absolute;
+      right:14px;
+      bottom:14px;
+      z-index:4;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(0,0,0,.58);
+      border:1px solid rgba(255,255,255,.18);
+      font-size:.8rem;
+      font-weight:700;
+      opacity:0;
+      animation:hintFade 5s ease forwards;
+      pointer-events:none;
     }
 
     footer{
@@ -205,16 +214,22 @@
     }
 
     @keyframes float{
-      0%,100%{transform:translateY(0) translateX(0)}
-      50%{transform:translateY(-18px) translateX(8px)}
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-18px)}
+    }
+
+    @keyframes hintFade{
+      0%{opacity:0;transform:translateY(8px)}
+      12%,72%{opacity:1;transform:translateY(0)}
+      100%{opacity:0}
     }
 
     @media(max-width:600px) and (orientation:portrait){
       .page{justify-content:flex-start;gap:20px}
-      .hero{padding-top:8px}
       .player-shell{padding:7px;border-radius:22px}
       .player-wrap{border-radius:16px}
       .rotate-tip{display:block}
+      .fullscreen-hint{display:block}
     }
 
     @media(orientation:landscape) and (max-height:650px){
@@ -226,7 +241,7 @@
         overflow:hidden;
       }
 
-      body::before,.orb,.hero,.rotate-tip,footer{
+      .orb,.hero,.rotate-tip,footer,.fullscreen-hint{
         display:none;
       }
 
@@ -238,6 +253,7 @@
         padding:0;
         margin:0;
         gap:0;
+        background:#000;
       }
 
       .player-shell{
@@ -254,24 +270,20 @@
 
       .player-wrap{
         width:100vw;
-        height:calc(100dvh - 52px);
+        height:100dvh;
         aspect-ratio:auto;
         border-radius:0;
       }
 
-      .replay-row{
-        height:52px;
-        padding:6px;
-        background:#000;
+      iframe{
+        width:100vw;
+        height:100dvh;
       }
 
-      .replay-btn{
-        padding:8px 14px;
+      .watch-again button{
+        font-size:1.05rem;
+        padding:15px 24px;
       }
-    }
-
-    @media(prefers-reduced-motion:reduce){
-      .orb{animation:none}
     }
   </style>
 </head>
@@ -290,21 +302,22 @@
       <p class="sub">Six months of moments, milestones and memories, all in one recap.</p>
     </section>
 
-    <section class="player-shell" aria-label="2026 First Half Recap">
+    <section class="player-shell">
       <div class="player-wrap">
         <iframe
           id="recapFrame"
-          loading="lazy"
           src="https://www.canva.com/design/DAHOxlNI2Pc/hJ-0WrZ6fAN3uDyI5ax_Fg/watch?embed"
           allow="fullscreen; autoplay"
           allowfullscreen
           webkitallowfullscreen
           title="2026 First Half Recap">
         </iframe>
-      </div>
 
-      <div class="replay-row">
-        <button class="replay-btn" id="replayBtn" type="button">↻ Play Again</button>
+        <div class="fullscreen-hint">Tap ⛶ in the player for full screen</div>
+
+        <div class="watch-again" id="watchAgain">
+          <button id="watchAgainBtn" type="button">▶ Watch Again</button>
+        </div>
       </div>
     </section>
 
@@ -315,19 +328,36 @@
 
   <script>
     const frame = document.getElementById('recapFrame');
-    const replayBtn = document.getElementById('replayBtn');
+    const watchAgain = document.getElementById('watchAgain');
+    const watchAgainBtn = document.getElementById('watchAgainBtn');
     const canvaUrl = 'https://www.canva.com/design/DAHOxlNI2Pc/hJ-0WrZ6fAN3uDyI5ax_Fg/watch?embed';
 
+    // Canva does not expose playback-ended events to the parent page.
+    // Show the replay overlay after a configurable duration.
+    const VIDEO_DURATION_MS = 180000; // 3 minutes. Change if needed.
+    let replayTimer;
+
+    function startReplayTimer(){
+      clearTimeout(replayTimer);
+      watchAgain.classList.remove('show');
+      replayTimer = setTimeout(() => {
+        watchAgain.classList.add('show');
+      }, VIDEO_DURATION_MS);
+    }
+
     frame.addEventListener('load', () => {
-      setTimeout(() => burstConfetti(100), 350);
+      setTimeout(() => burstConfetti(90), 350);
+      startReplayTimer();
     });
 
-    replayBtn.addEventListener('click', () => {
+    watchAgainBtn.addEventListener('click', () => {
+      watchAgain.classList.remove('show');
       frame.src = 'about:blank';
 
       setTimeout(() => {
         frame.src = canvaUrl + '&restart=' + Date.now();
         burstConfetti(120);
+        startReplayTimer();
       }, 80);
     });
 
@@ -337,20 +367,19 @@
     let raf=null;
 
     function resizeCanvas(){
-      canvas.width=window.innerWidth*devicePixelRatio;
-      canvas.height=window.innerHeight*devicePixelRatio;
-      canvas.style.width=window.innerWidth+'px';
-      canvas.style.height=window.innerHeight+'px';
+      canvas.width=innerWidth*devicePixelRatio;
+      canvas.height=innerHeight*devicePixelRatio;
+      canvas.style.width=innerWidth+'px';
+      canvas.style.height=innerHeight+'px';
       ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
     }
 
     function burstConfetti(amount=100){
       const colors=['#ffc857','#ffffff','#ff6b81','#ffd6de','#ff9f1c'];
-
       for(let i=0;i<amount;i++){
         pieces.push({
-          x:window.innerWidth/2+(Math.random()-.5)*170,
-          y:window.innerHeight*.24,
+          x:innerWidth/2+(Math.random()-.5)*170,
+          y:innerHeight*.24,
           vx:(Math.random()-.5)*10,
           vy:-3-Math.random()*7,
           g:.16+Math.random()*.07,
@@ -361,20 +390,13 @@
           color:colors[Math.floor(Math.random()*colors.length)]
         });
       }
-
       if(!raf) animateConfetti();
     }
 
     function animateConfetti(){
-      ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-
+      ctx.clearRect(0,0,innerWidth,innerHeight);
       pieces.forEach(p=>{
-        p.x+=p.vx;
-        p.y+=p.vy;
-        p.vy+=p.g;
-        p.rot+=p.spin;
-        p.a-=.009;
-
+        p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.rot+=p.spin;p.a-=.009;
         ctx.save();
         ctx.globalAlpha=Math.max(p.a,0);
         ctx.translate(p.x,p.y);
@@ -383,20 +405,18 @@
         ctx.fillRect(-p.r,-p.r/2,p.r*2,p.r);
         ctx.restore();
       });
-
-      pieces=pieces.filter(p=>p.a>0&&p.y<window.innerHeight+30);
-
+      pieces=pieces.filter(p=>p.a>0&&p.y<innerHeight+30);
       if(pieces.length){
         raf=requestAnimationFrame(animateConfetti);
       }else{
         cancelAnimationFrame(raf);
         raf=null;
-        ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+        ctx.clearRect(0,0,innerWidth,innerHeight);
       }
     }
 
     resizeCanvas();
-    window.addEventListener('resize',resizeCanvas);
+    addEventListener('resize',resizeCanvas);
   </script>
 </body>
 </html>
