@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7a0019" />
+  <title>GCS&I COE 2026 First Half Recap</title>
+  <meta name="description" content="GCS&I COE 2026 First Half Recap — six months of teamwork, celebrations and memorable moments." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --red:#d71920;
+      --deep-red:#6e0019;
+      --wine:#3b0011;
+      --cream:#fff8f5;
+      --gold:#ffc857;
+      --ink:#241217;
+      --card:rgba(255,255,255,.13);
+      --line:rgba(255,255,255,.2);
+      --shadow:0 25px 70px rgba(34,0,10,.35);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"DM Sans",sans-serif;
+      color:white;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255,200,87,.18), transparent 25%),
+        radial-gradient(circle at 88% 20%, rgba(255,255,255,.09), transparent 22%),
+        linear-gradient(145deg,var(--wine),var(--deep-red) 42%,#b50927 72%,#ed1b2f);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(to bottom,black,transparent 78%);
+      z-index:-2;
+    }
+
+    button,a{font:inherit}
+    .sr-only{
+      position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+    }
+
+    .intro{
+      position:fixed;
+      inset:0;
+      z-index:100;
+      display:grid;
+      place-items:center;
+      background:
+        radial-gradient(circle at center,rgba(255,200,87,.16),transparent 32%),
+        linear-gradient(145deg,#29000c,#6e0019 48%,#d71920);
+      transition:opacity .7s ease,visibility .7s ease;
+    }
+
+    .intro.hidden{opacity:0;visibility:hidden}
+    .intro-card{
+      width:min(92vw,780px);
+      text-align:center;
+      padding:48px 24px;
+      position:relative;
+    }
+
+    .intro-logo{
+      display:inline-grid;
+      place-items:center;
+      width:84px;height:84px;
+      border-radius:26px;
+      background:linear-gradient(145deg,#ffdf8a,#ffc857);
+      color:#5a0015;
+      font-size:44px;
+      box-shadow:0 20px 55px rgba(0,0,0,.28);
+      animation:float 3.2s ease-in-out infinite;
+    }
+
+    .eyebrow{
+      margin:28px 0 8px;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      font-size:.78rem;
+      font-weight:700;
+      opacity:.78;
+    }
+
+    .intro h1,.hero h1{
+      font-family:"Space Grotesk",sans-serif;
+      margin:.2em 0;
+      line-height:.94;
+      letter-spacing:-.04em;
+    }
+
+    .intro h1{font-size:clamp(2.8rem,8vw,6.8rem)}
+    .intro p{
+      max-width:640px;
+      margin:20px auto 30px;
+      color:rgba(255,255,255,.82);
+      font-size:clamp(1rem,2.2vw,1.2rem);
+    }
+
+    .primary-btn{
+      border:0;
+      cursor:pointer;
+      padding:15px 24px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#fff2c5,#ffc857);
+      color:#4f0012;
+      font-weight:800;
+      box-shadow:0 14px 36px rgba(255,200,87,.28);
+      transition:transform .2s ease,box-shadow .2s ease;
+    }
+    .primary-btn:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(255,200,87,.36)}
+    .primary-btn:active{transform:translateY(0)}
+
+    .topbar{
+      width:min(1180px,calc(100% - 32px));
+      margin:0 auto;
+      padding:24px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      position:relative;
+      z-index:10;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+    }
+
+    .brand-badge{
+      width:42px;height:42px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:linear-gradient(145deg,#ffdf8a,#ffc857);
+      color:#560014;
+      box-shadow:0 10px 28px rgba(0,0,0,.2);
+    }
+
+    .music-btn{
+      border:1px solid var(--line);
+      color:white;
+      background:rgba(255,255,255,.08);
+      backdrop-filter:blur(14px);
+      padding:10px 14px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:700;
+      transition:.2s ease;
+    }
+    .music-btn:hover{background:rgba(255,255,255,.16)}
+
+    main{position:relative;z-index:1}
+    .hero{
+      width:min(1180px,calc(100% - 32px));
+      margin:0 auto;
+      min-height:66vh;
+      display:grid;
+      align-content:center;
+      text-align:center;
+      padding:48px 0 36px;
+    }
+
+    .hero h1{font-size:clamp(3rem,9vw,7.4rem)}
+    .hero .sub{
+      max-width:760px;
+      margin:20px auto;
+      color:rgba(255,255,255,.82);
+      font-size:clamp(1.05rem,2vw,1.28rem);
+    }
+
+    .hero-actions{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:24px;
+    }
+
+    .ghost-btn{
+      padding:14px 22px;
+      border-radius:999px;
+      color:white;
+      text-decoration:none;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.08);
+      backdrop-filter:blur(12px);
+      font-weight:800;
+      transition:.2s ease;
+    }
+    .ghost-btn:hover{transform:translateY(-3px);background:rgba(255,255,255,.14)}
+
+    .stage{
+      width:min(1180px,calc(100% - 32px));
+      margin:26px auto 80px;
+      padding:14px;
+      border-radius:30px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.2);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+
+    .stage-inner{
+      position:relative;
+      width:100%;
+      padding-top:56.25%;
+      overflow:hidden;
+      border-radius:20px;
+      background:#150007;
+    }
+
+    .stage iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    section.content{
+      width:min(1180px,calc(100% - 32px));
+      margin:0 auto;
+      padding:20px 0 90px;
+    }
+
+    .section-heading{
+      text-align:center;
+      margin-bottom:34px;
+    }
+
+    .section-heading h2{
+      margin:0;
+      font-family:"Space Grotesk",sans-serif;
+      font-size:clamp(2rem,4vw,3.5rem);
+      letter-spacing:-.04em;
+    }
+
+    .section-heading p{
+      margin:12px auto 0;
+      color:rgba(255,255,255,.74);
+      max-width:680px;
+    }
+
+    .event-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:16px;
+    }
+
+    .event-card{
+      min-height:170px;
+      padding:22px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.18);
+      background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.07));
+      backdrop-filter:blur(14px);
+      transition:transform .25s ease,border-color .25s ease,background .25s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .event-card::after{
+      content:"";
+      position:absolute;
+      width:90px;height:90px;
+      border-radius:50%;
+      right:-34px;bottom:-40px;
+      background:rgba(255,200,87,.13);
+    }
+
+    .event-card:hover{
+      transform:translateY(-7px) rotate(-.4deg);
+      border-color:rgba(255,255,255,.36);
+      background:linear-gradient(145deg,rgba(255,255,255,.2),rgba(255,255,255,.09));
+    }
+
+    .icon{font-size:2rem;display:block;margin-bottom:22px}
+    .event-card h3{margin:0;font-size:1.06rem}
+    .event-card p{margin:8px 0 0;color:rgba(255,255,255,.66);font-size:.9rem}
+
+    .stats{
+      margin-top:70px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .stat{
+      text-align:center;
+      padding:34px 18px;
+      border-radius:26px;
+      background:rgba(255,248,245,.95);
+      color:var(--ink);
+      box-shadow:0 18px 45px rgba(34,0,10,.16);
+    }
+
+    .stat strong{
+      display:block;
+      font-family:"Space Grotesk",sans-serif;
+      font-size:clamp(2.4rem,5vw,4.4rem);
+      color:#a00024;
+    }
+
+    .ending{
+      width:min(1180px,calc(100% - 32px));
+      margin:0 auto 42px;
+      padding:56px 24px;
+      text-align:center;
+      border-radius:34px;
+      background:
+        radial-gradient(circle at top left,rgba(255,200,87,.28),transparent 28%),
+        rgba(255,255,255,.11);
+      border:1px solid rgba(255,255,255,.2);
+      backdrop-filter:blur(18px);
+    }
+
+    .ending .ollie{
+      font-size:64px;
+      display:inline-block;
+      cursor:pointer;
+      animation:wave 2.3s ease-in-out infinite;
+      transform-origin:70% 80%;
+      user-select:none;
+    }
+
+    .ending h2{
+      font-family:"Space Grotesk",sans-serif;
+      font-size:clamp(2rem,4.8vw,4.2rem);
+      margin:12px auto;
+      max-width:900px;
+      letter-spacing:-.04em;
+    }
+
+    .ending p{color:rgba(255,255,255,.75)}
+    footer{
+      text-align:center;
+      padding:18px 16px 36px;
+      color:rgba(255,255,255,.58);
+      font-size:.92rem;
+    }
+
+    .floaty{
+      position:fixed;
+      pointer-events:none;
+      z-index:0;
+      opacity:.22;
+      animation:drift linear infinite;
+      filter:drop-shadow(0 8px 14px rgba(0,0,0,.18));
+    }
+
+    #confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:200;
+    }
+
+    @keyframes float{50%{transform:translateY(-12px) rotate(4deg)}}
+    @keyframes wave{
+      0%,100%{transform:rotate(0)}
+      35%{transform:rotate(8deg)}
+      70%{transform:rotate(-6deg)}
+    }
+    @keyframes drift{
+      from{transform:translateY(110vh) rotate(0deg)}
+      to{transform:translateY(-20vh) rotate(360deg)}
+    }
+
+    @media (max-width:980px){
+      .event-grid{grid-template-columns:repeat(2,1fr)}
+      .stats{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media (max-width:600px){
+      .topbar{padding-top:16px}
+      .brand span:last-child{display:none}
+      .hero{min-height:58vh;padding-top:24px}
+      .event-grid,.stats{grid-template-columns:1fr}
+      .event-card{min-height:150px}
+      .stage{border-radius:22px;padding:8px}
+      .stage-inner{border-radius:16px}
+      .intro-card{padding-top:24px}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+      .floaty{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <div class="intro" id="intro">
+    <div class="intro-card">
+      <div class="intro-logo" aria-hidden="true">🐙</div>
+      <div class="eyebrow">GCS&amp;I COE presents</div>
+      <h1>2026 First Half Recap</h1>
+      <p>Six months. Ten memorable events. One brilliant COE. Let’s rewind the moments that made the first half sparkle.</p>
+      <button class="primary-btn" id="enterBtn">Start the Journey ✨</button>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-badge">🐙</div>
+      <span>GCS&amp;I COE</span>
+    </div>
+    <button class="music-btn" id="musicBtn" aria-pressed="false">🔇 Music Off</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">The people. The moments. The memories.</div>
+      <h1>First Half,<br>Full of Highlights.</h1>
+      <p class="sub">
+        From awards and friendly competition to festive celebrations and team moments,
+        here’s our 2026 first-half story, wrapped in energy, laughter and a tiny bit of confetti.
+      </p>
+      <div class="hero-actions">
+        <a class="primary-btn" href="#recap">▶ Watch the Recap</a>
+        <a class="ghost-btn" href="#highlights">Explore Highlights</a>
+      </div>
+    </section>
+
+    <section class="stage" id="recap" aria-label="GCS&I COE 2026 First Half Recap presentation">
+      <div class="stage-inner">
+        <iframe
+          loading="lazy"
+          src="https://www.canva.com/design/DAHOxlNI2Pc/hJ-0WrZ6fAN3uDyI5ax_Fg/watch?embed"
+          allowfullscreen="allowfullscreen"
+          allow="fullscreen"
+          title="GCS&I COE 2026 First Half Recap">
+        </iframe>
+      </div>
+    </section>
+
+    <section class="content" id="highlights">
+      <div class="section-heading">
+        <h2>Ten chapters. Plenty of plot twists.</h2>
+        <p>Every card marks a moment that brought the team together, whether through celebration, competition or a very serious UNO face.</p>
+      </div>
+
+      <div class="event-grid">
+        <article class="event-card"><span class="icon">🏆</span><h3>2025 Q4 Awards</h3><p>Celebrating the people who finished the year strongly.</p></article>
+        <article class="event-card"><span class="icon">🏸</span><h3>Badminton</h3><p>Smashes, rallies and plenty of team spirit.</p></article>
+        <article class="event-card"><span class="icon">🎤</span><h3>Townhall &amp; Farewell</h3><p>Updates, appreciation and a meaningful send-off.</p></article>
+        <article class="event-card"><span class="icon">🧧</span><h3>Chinese New Year</h3><p>Festive colours, cheerful moments and good fortune.</p></article>
+        <article class="event-card"><span class="icon">🃏</span><h3>UNO Games Challenge</h3><p>Friendship paused briefly. Draw Four activated.</p></article>
+        <article class="event-card"><span class="icon">🥇</span><h3>2026 Q1 Awards</h3><p>Recognising another quarter of great contributions.</p></article>
+        <article class="event-card"><span class="icon">🎬</span><h3>QA Movie Day</h3><p>Popcorn, screen time and a well-earned breather.</p></article>
+        <article class="event-card"><span class="icon">🥒</span><h3>Pickleball</h3><p>Fast rallies, new skills and questionable scorekeeping.</p></article>
+        <article class="event-card"><span class="icon">🌙</span><h3>Hari Raya Celebration</h3><p>Good food, festive warmth and togetherness.</p></article>
+        <article class="event-card"><span class="icon">🎳</span><h3>Bowling</h3><p>Strikes, spares and the occasional gutter-ball saga.</p></article>
+      </div>
+
+      <div class="stats" aria-label="Recap statistics">
+        <div class="stat"><strong data-count="10">0</strong><span>Amazing Events</span></div>
+        <div class="stat"><strong data-count="100" data-suffix="+">0</strong><span>Smiles Captured</span></div>
+        <div class="stat"><strong data-count="1">0</strong><span>Awesome COE</span></div>
+        <div class="stat"><strong data-text="∞">0</strong><span>Team Spirit</span></div>
+      </div>
+    </section>
+
+    <section class="ending">
+      <div class="ollie" id="ollie" role="button" tabindex="0" aria-label="Click Ollie for confetti">🐙</div>
+      <h2>Thank you for making the first half unforgettable.</h2>
+      <p>Here’s to an even brighter second half. Click Ollie for a tiny celebration.</p>
+    </section>
+  </main>
+
+  <footer>Made with ❤️ by COE Engagement</footer>
+
+  <audio id="bgMusic" loop preload="none">
+    <!-- Optional: add a royalty-free MP3 named "music.mp3" to the same folder. -->
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const intro = document.getElementById('intro');
+    const enterBtn = document.getElementById('enterBtn');
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    const ollie = document.getElementById('ollie');
+
+    enterBtn.addEventListener('click', () => {
+      intro.classList.add('hidden');
+      burstConfetti(140);
+    });
+
+    musicBtn.addEventListener('click', async () => {
+      if (bgMusic.paused) {
+        try {
+          await bgMusic.play();
+          musicBtn.textContent = '🔊 Music On';
+          musicBtn.setAttribute('aria-pressed','true');
+        } catch (e) {
+          musicBtn.textContent = '🎵 Add music.mp3';
+        }
+      } else {
+        bgMusic.pause();
+        musicBtn.textContent = '🔇 Music Off';
+        musicBtn.setAttribute('aria-pressed','false');
+      }
+    });
+
+    const floatingIcons = ['🎳','🃏','🏸','🎬','✨','🏆'];
+    for(let i=0;i<12;i++){
+      const el=document.createElement('div');
+      el.className='floaty';
+      el.textContent=floatingIcons[i%floatingIcons.length];
+      el.style.left=(Math.random()*96)+'vw';
+      el.style.fontSize=(18+Math.random()*20)+'px';
+      el.style.animationDuration=(12+Math.random()*14)+'s';
+      el.style.animationDelay=(-Math.random()*18)+'s';
+      document.body.appendChild(el);
+    }
+
+    const statObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        const el=entry.target;
+        if(el.dataset.text){
+          el.textContent=el.dataset.text;
+        }else{
+          const target=Number(el.dataset.count||0);
+          const suffix=el.dataset.suffix||'';
+          let start=0;
+          const duration=1200;
+          const started=performance.now();
+          const step=(now)=>{
+            const p=Math.min((now-started)/duration,1);
+            const eased=1-Math.pow(1-p,3);
+            el.textContent=Math.floor(target*eased)+suffix;
+            if(p<1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        }
+        statObserver.unobserve(el);
+      });
+    },{threshold:.6});
+
+    document.querySelectorAll('.stat strong').forEach(el=>statObserver.observe(el));
+
+    const canvas=document.getElementById('confetti');
+    const ctx=canvas.getContext('2d');
+    let pieces=[];
+    let raf;
+
+    function resizeCanvas(){
+      canvas.width=window.innerWidth*devicePixelRatio;
+      canvas.height=window.innerHeight*devicePixelRatio;
+      canvas.style.width=window.innerWidth+'px';
+      canvas.style.height=window.innerHeight+'px';
+      ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    }
+    resizeCanvas();
+    window.addEventListener('resize',resizeCanvas);
+
+    function burstConfetti(amount=100){
+      const colors=['#ffc857','#ffffff','#ff6b81','#ffd6de','#ff9f1c'];
+      for(let i=0;i<amount;i++){
+        pieces.push({
+          x:window.innerWidth/2+(Math.random()-.5)*180,
+          y:window.innerHeight*.42,
+          vx:(Math.random()-.5)*11,
+          vy:-4-Math.random()*8,
+          g:.16+Math.random()*.08,
+          r:3+Math.random()*5,
+          a:1,
+          spin:(Math.random()-.5)*.28,
+          rot:Math.random()*Math.PI,
+          color:colors[Math.floor(Math.random()*colors.length)]
+        });
+      }
+      if(!raf) animateConfetti();
+    }
+
+    function animateConfetti(){
+      ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+      pieces.forEach(p=>{
+        p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.rot+=p.spin;p.a-=.008;
+        ctx.save();
+        ctx.globalAlpha=Math.max(p.a,0);
+        ctx.translate(p.x,p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle=p.color;
+        ctx.fillRect(-p.r,-p.r/2,p.r*2,p.r);
+        ctx.restore();
+      });
+      pieces=pieces.filter(p=>p.a>0&&p.y<window.innerHeight+30);
+      if(pieces.length){raf=requestAnimationFrame(animateConfetti)}
+      else{cancelAnimationFrame(raf);raf=null;ctx.clearRect(0,0,window.innerWidth,window.innerHeight)}
+    }
+
+    ollie.addEventListener('click',()=>burstConfetti(120));
+    ollie.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();burstConfetti(120)}
+    });
+
+    let code=[];
+    const secret=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight'];
+    window.addEventListener('keydown',e=>{
+      code.push(e.key);
+      code=code.slice(-secret.length);
+      if(secret.every((key,i)=>code[i]===key)){
+        ollie.animate([
+          {transform:'rotate(0) scale(1)'},
+          {transform:'rotate(15deg) scale(1.18)'},
+          {transform:'rotate(-15deg) scale(.95)'},
+          {transform:'rotate(0) scale(1)'}
+        ],{duration:900,iterations:3});
+        burstConfetti(220);
+      }
+    });
+  </script>
+</body>
+</html>
