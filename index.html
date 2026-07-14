@@ -184,22 +184,6 @@
       font-size:.88rem;
     }
 
-    .fullscreen-hint{
-      position:absolute;
-      right:14px;
-      bottom:14px;
-      z-index:4;
-      padding:9px 12px;
-      border-radius:999px;
-      background:rgba(0,0,0,.58);
-      border:1px solid rgba(255,255,255,.18);
-      font-size:.8rem;
-      font-weight:700;
-      opacity:0;
-      animation:hintFade 5s ease forwards;
-      pointer-events:none;
-    }
-
     footer{
       text-align:center;
       color:rgba(255,255,255,.45);
@@ -218,18 +202,11 @@
       50%{transform:translateY(-18px)}
     }
 
-    @keyframes hintFade{
-      0%{opacity:0;transform:translateY(8px)}
-      12%,72%{opacity:1;transform:translateY(0)}
-      100%{opacity:0}
-    }
-
     @media(max-width:600px) and (orientation:portrait){
       .page{justify-content:flex-start;gap:20px}
       .player-shell{padding:7px;border-radius:22px}
       .player-wrap{border-radius:16px}
       .rotate-tip{display:block}
-      .fullscreen-hint{display:block}
     }
 
     @media(orientation:landscape) and (max-height:650px){
@@ -241,7 +218,7 @@
         overflow:hidden;
       }
 
-      .orb,.hero,.rotate-tip,footer,.fullscreen-hint{
+      .orb,.hero,.rotate-tip,footer{
         display:none;
       }
 
@@ -313,9 +290,7 @@
           title="2026 First Half Recap">
         </iframe>
 
-        <div class="fullscreen-hint">Tap ⛶ in the player for full screen</div>
-
-        <div class="watch-again" id="watchAgain">
+                <div class="watch-again" id="watchAgain">
           <button id="watchAgainBtn" type="button">▶ Watch Again</button>
         </div>
       </div>
@@ -334,7 +309,7 @@
 
     // Canva does not expose playback-ended events to the parent page.
     // Show the replay overlay after a configurable duration.
-    const VIDEO_DURATION_MS = 180000; // 3 minutes. Change if needed.
+    const VIDEO_DURATION_MS = 60000; // Replay overlay appears at 1 minute.
     let replayTimer;
 
     function startReplayTimer(){
