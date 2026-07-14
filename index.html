@@ -140,36 +140,6 @@
       border:0;
     }
 
-    .watch-again{
-      position:absolute;
-      inset:0;
-      z-index:3;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.68));
-      opacity:0;
-      visibility:hidden;
-      transition:opacity .25s ease,visibility .25s ease;
-    }
-
-    .watch-again.show{
-      opacity:1;
-      visibility:visible;
-    }
-
-    .watch-again button{
-      border:1px solid rgba(255,255,255,.3);
-      background:rgba(255,255,255,.14);
-      color:white;
-      border-radius:999px;
-      padding:14px 22px;
-      font-weight:800;
-      font-size:1rem;
-      backdrop-filter:blur(12px);
-      cursor:pointer;
-      box-shadow:0 16px 40px rgba(0,0,0,.3);
-    }
-
     .rotate-tip{
       display:none;
       text-align:center;
@@ -247,19 +217,24 @@
 
       .player-wrap{
         width:100vw;
-        height:100dvh;
+        height:calc(100dvh - 52px);
         aspect-ratio:auto;
         border-radius:0;
       }
 
       iframe{
         width:100vw;
-        height:100dvh;
+        height:calc(100dvh - 52px);
       }
 
-      .watch-again button{
-        font-size:1.05rem;
-        padding:15px 24px;
+      .replay-row{
+        height:52px;
+        padding:6px;
+        background:#000;
+      }
+
+      .replay-btn{
+        padding:8px 15px;
       }
     }
   </style>
@@ -289,12 +264,8 @@
           webkitallowfullscreen
           title="2026 First Half Recap">
         </iframe>
-
-                <div class="watch-again" id="watchAgain">
-          <button id="watchAgainBtn" type="button">▶ Watch Again</button>
-        </div>
       </div>
-    </section>
+</section>
 
     <p class="rotate-tip">💡 You can rotate your phone for a wider view.</p>
 
@@ -303,38 +274,6 @@
 
   <script>
     const frame = document.getElementById('recapFrame');
-    const watchAgain = document.getElementById('watchAgain');
-    const watchAgainBtn = document.getElementById('watchAgainBtn');
-    const driveUrl = 'https://drive.google.com/file/d/1xE4toVQX19mGaeeddwOBAWCsrJg2a-U_/preview';
-
-    // Google Drive does not expose playback-ended events to the parent page.
-    // Show the replay overlay after a configurable duration.
-    const VIDEO_DURATION_MS = 60000; // Replay overlay appears at 1 minute.
-    let replayTimer;
-
-    function startReplayTimer(){
-      clearTimeout(replayTimer);
-      watchAgain.classList.remove('show');
-      replayTimer = setTimeout(() => {
-        watchAgain.classList.add('show');
-      }, VIDEO_DURATION_MS);
-    }
-
-    frame.addEventListener('load', () => {
-      setTimeout(() => burstConfetti(90), 350);
-      startReplayTimer();
-    });
-
-    watchAgainBtn.addEventListener('click', () => {
-      watchAgain.classList.remove('show');
-      frame.src = 'about:blank';
-
-      setTimeout(() => {
-        frame.src = driveUrl + '?t=' + Date.now();
-        burstConfetti(120);
-        startReplayTimer();
-      }, 80);
-    });
 
     const canvas=document.getElementById('confetti');
     const ctx=canvas.getContext('2d');
